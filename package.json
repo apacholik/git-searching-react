@@ -1,6 +1,6 @@
 {
-  "name": "test2",
-  "version": "0.1.0",
+  "name": "git-searching",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "react": "^16.7.0",
@@ -14,12 +14,16 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "@callstack"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@callstack/eslint-config": "^3.0.2",
+    "eslint": "^5.11.1"
+  }
 }
