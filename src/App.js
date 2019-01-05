@@ -5,13 +5,17 @@ import '@fortawesome/fontawesome-free/js/all';
 class App extends Component {
   render() {
     return (
-      <div>
-        <button className="button is-primary">
-          <span className="icon">
-            <i className="fas fa-thumbs-up"></i>
-          </span>
-        </button>
-      </div>
+      <section className="section">
+        <div className="container">
+          <h1 className="title">Hello</h1>
+          <p className="subtitle">
+            This page site is in build
+            <span className="icon">
+              <i className="fas fa-project-diagram" />
+            </span>
+          </p>
+        </div>
+      </section>
     );
   }
 }
