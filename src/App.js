@@ -9,9 +9,9 @@ class App extends Component {
       <section className="section">
         <div className="container">
           <h1 className="title">Hello</h1>
-          <p className="subtitle">
+          <div className="subtitle">
             <SearchBar />
-          </p>
+          </div>
         </div>
       </section>
     );

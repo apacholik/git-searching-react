@@ -1,9 +1,29 @@
 import React, { Component } from 'react';
 
 export default class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.timeoutFingerprint = null;
+    this.inputRef = new React.createRef();
+  }
+
+  delayForWriteEnd() {
+    clearInterval(this.timeoutFingerprint);
+    this.timeoutFingerprint = setTimeout(() => {
+      if (this.props.onChange) this.props.onChange(this.valueOfInput);
+      else throw new ReferenceError('Not add props onChange');
+    }, 1500);
+  }
+
   render = () => (
     <div className="control has-icons-right">
-      <input className="input" type="text" placeholder="Search..." />
+      <input
+        className="input"
+        type="text"
+        placeholder="Search..."
+        onChange={() => this.delayForWriteEnd()}
+        ref={this.inputRef}
+      />
       <span className="icon is-small is-right">
         <i className="fas fa-search" />
       </span>
