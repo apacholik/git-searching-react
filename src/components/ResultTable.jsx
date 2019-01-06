@@ -9,7 +9,8 @@ export default class ResultTable extends Component {
           <tr>
             <th>ID</th>
             <th>Repo Title</th>
-            <th>Owner Stars</th>
+            <th>Owner</th>
+            <th>Stars</th>
             <th>Create at</th>
           </tr>
         </thead>
@@ -18,6 +19,7 @@ export default class ResultTable extends Component {
             <tr key={row.id}>
               <td>{row.id}</td>
               <td>{row.title}</td>
+              <td>{row.owner}</td>
               <td>{row.stars}</td>
               <td>{row.createAt}</td>
             </tr>
