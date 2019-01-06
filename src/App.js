@@ -23,13 +23,24 @@ class App extends Component {
       `${GITHUB_SEARCH_URL}?${this.searchParameters.toString()}`
     ).then(res => res.json());
     this.setState({
-      githubRepos: resultQuery.items.map(item => ({
-        id: item.id,
-        title: item.name,
-        owner: item.owner.login,
-        stars: item.stargazers_count,
-        createAt: item.created_at,
-      })),
+      githubRepos: resultQuery.items.map(item => {
+        const createdDate = new Date(item.created_at);
+        return {
+          id: item.id,
+          title: item.name,
+          owner: item.owner.login,
+          stars: item.stargazers_count,
+          createAt: `${createdDate.getFullYear()}-${
+            createdDate.getMonth() < 9
+              ? `0${createdDate.getMonth() + 1}`
+              : `${createdDate.getMonth() + 1}`
+          }-${
+            createdDate.getDate() < 10
+              ? `0${createdDate.getDate()}`
+              : `${createdDate.getDate()}`
+          }`,
+        };
+      }),
     });
   }
 
