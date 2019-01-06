@@ -1,68 +1,20 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Page wher can You search repository
 
-## Available Scripts
+## How get
 
-In the project directory, you can run:
+### With node and npm/yarn
+1. clone this repository: `git clone https://endriu072@bitbucket.org/endriu072/git-searching.git`
+2. go to created folder `git-search`
+3. install all modules using npm (`npm install`) or yarn (`yarn install`)
+4. use react-script to start server: `npm start` or `yarn start`
 
-### `npm start`
+### Without node and npm/yarn, but with serwer www
+1. clone this repository: `git clone https://endriu072@bitbucket.org/endriu072/git-searching.git`
+2. go to created folders `git-search/build` and copy all files
+3. create folder (don't use space (' ') or non latin alphabetic - this will be easer) in Your HTTP server root folder and paste all coped files in this folder
+4. Go to Your site with folder name like `http://my-ip-or-adres/git-search`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### How use
+1. go to page and in search input write what You repository search. You can use GitHub queries [What?](https://help.github.com/articles/searching-for-repositories/)
+2. in the table below (if all will go good) show 5 result with the moust stars
+![how works](https://media.giphy.com/media/X6IpGWNNKw1kWDw6Yo/giphy.gif)
