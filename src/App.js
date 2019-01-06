@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bulma';
 import '@fortawesome/fontawesome-free/js/all';
 import ResultTable from './components/ResultTable.jsx';
+import SearchBar from './components/SearchBar.jsx';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
         <div className="container">
           <h1 className="title">Hello</h1>
           <div className="subtitle">
+            <SearchBar />
             <ResultTable>
               {[
                 {
