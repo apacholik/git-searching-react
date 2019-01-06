@@ -15,7 +15,7 @@ export default class ResultTable extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.children.slice(0, numberOfRows - 1).map(row => (
+          {this.props.children.slice(0, numberOfRows).map(row => (
             <tr key={row.id}>
               <td>{row.id}</td>
               <td>{row.title}</td>
