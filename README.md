@@ -14,7 +14,8 @@
 3. create folder (don't use space (' ') or non latin alphabetic - this will be easer) in Your HTTP server root folder and paste all coped files in this folder
 4. Go to Your site with folder name like `http://my-ip-or-adres/git-search`
 
-### How use
+## How use
 1. go to page and in search input write what You repository search. You can use GitHub queries [What?](https://help.github.com/articles/searching-for-repositories/)
 2. in the table below (if all will go good) show 5 result with the moust stars
+
 ![how works](https://media.giphy.com/media/X6IpGWNNKw1kWDw6Yo/giphy.gif)
