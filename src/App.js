@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bulma';
 import '@fortawesome/fontawesome-free/js/all';
+import ResultTable from './components/ResultTable.jsx';
 
 class App extends Component {
   render() {
@@ -8,12 +9,48 @@ class App extends Component {
       <section className="section">
         <div className="container">
           <h1 className="title">Hello</h1>
-          <p className="subtitle">
-            This page site is in build
-            <span className="icon">
-              <i className="fas fa-project-diagram" />
-            </span>
-          </p>
+          <div className="subtitle">
+            <ResultTable>
+              {[
+                {
+                  id: 0,
+                  title: 'test1',
+                  stars: 9,
+                  createAt: '00-00-9999',
+                },
+                {
+                  id: 1,
+                  title: 'test2',
+                  stars: 88,
+                  createAt: '00-00-9999',
+                },
+                {
+                  id: 2,
+                  title: 'test3',
+                  stars: 65,
+                  createAt: '00-00-9999',
+                },
+                {
+                  id: 3,
+                  title: 'test4',
+                  stars: 321,
+                  createAt: '00-00-9999',
+                },
+                {
+                  id: 4,
+                  title: 'test5',
+                  stars: 5,
+                  createAt: '00-00-9999',
+                },
+                {
+                  id: 5,
+                  title: 'test6',
+                  stars: 64,
+                  createAt: '00-00-9999',
+                },
+              ]}
+            </ResultTable>
+          </div>
         </div>
       </section>
     );
