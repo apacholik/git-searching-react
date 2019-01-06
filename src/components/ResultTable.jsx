@@ -4,24 +4,24 @@ export default class ResultTable extends Component {
   render() {
     const numberOfRows = this.props.numberOfRows || 5;
     return (
-      <table className="table">
+      <table className="table is-fullwidth table is-bordered">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Repo Title</th>
-            <th>Owner</th>
-            <th>Stars</th>
-            <th>Create at</th>
+            <th className="has-text-right">ID</th>
+            <th className="has-text-centered">Repo Title</th>
+            <th className="has-text-centered">Owner</th>
+            <th className="has-text-centered">Stars</th>
+            <th className="has-text-centered">Create at</th>
           </tr>
         </thead>
         <tbody>
           {this.props.children.slice(0, numberOfRows - 1).map(row => (
             <tr key={row.id}>
-              <td>{row.id}</td>
-              <td>{row.title}</td>
-              <td>{row.owner}</td>
-              <td>{row.stars}</td>
-              <td>{row.createAt}</td>
+              <td className="has-text-centered">{row.id}</td>
+              <td className="has-text-centered">{row.title}</td>
+              <td className="has-text-centered">{row.owner}</td>
+              <td className="has-text-centered">{row.stars}</td>
+              <td className="has-text-centered">{row.createAt}</td>
             </tr>
           ))}
         </tbody>
