@@ -1,4 +1,4 @@
-# Page wher can You search repository
+# Page where You can search repository
 
 ## How get
 
