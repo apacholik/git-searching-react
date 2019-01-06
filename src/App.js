@@ -47,13 +47,18 @@ class App extends Component {
   render() {
     return (
       <section className="section">
-        <div className="container">
-          <h1 className="title">Hello</h1>
-          <div className="subtitle">
-            <SearchBar
-              onChange={text => this.searchInGithubRepositories(text)}
-            />
-            <ResultTable>{this.state.githubRepos}</ResultTable>
+        <div className="columns">
+          <div className="column is-three-fifths is-offset-one-fifth">
+            <div className="columns is-multiline">
+              <div className="column is-full">
+                <SearchBar
+                  onChange={text => this.searchInGithubRepositories(text)}
+                />
+              </div>
+              <div className="column is-full">
+                <ResultTable>{this.state.githubRepos}</ResultTable>
+              </div>
+            </div>
           </div>
         </div>
       </section>
