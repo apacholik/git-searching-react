@@ -15,7 +15,7 @@ export default class ResultTable extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.children.slice(0, numberOfRows - 1).map(row => (
+          {this.props.children.slice(0, numberOfRows).map(row => (
             <tr key={row.id}>
               <td className="has-text-centered">{row.id}</td>
               <td className="has-text-centered">{row.title}</td>
