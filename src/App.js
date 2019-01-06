@@ -22,26 +22,36 @@ class App extends Component {
     const resultQuery = await fetch(
       `${GITHUB_SEARCH_URL}?${this.searchParameters.toString()}`
     ).then(res => res.json());
-    this.setState({
-      githubRepos: resultQuery.items.map(item => {
-        const createdDate = new Date(item.created_at);
-        return {
-          id: item.id,
-          title: item.name,
-          owner: item.owner.login,
-          stars: item.stargazers_count,
-          createAt: `${createdDate.getFullYear()}-${
-            createdDate.getMonth() < 9
-              ? `0${createdDate.getMonth() + 1}`
-              : `${createdDate.getMonth() + 1}`
-          }-${
-            createdDate.getDate() < 10
-              ? `0${createdDate.getDate()}`
-              : `${createdDate.getDate()}`
-          }`,
-        };
-      }),
-    });
+    if (resultQuery.items) {
+      this.setState({
+        githubRepos: resultQuery.items.map(item => {
+          const createdDate = new Date(item.created_at);
+          return {
+            id: item.id,
+            title: item.name,
+            owner: item.owner.login,
+            stars: item.stargazers_count,
+            createAt: `${createdDate.getFullYear()}-${
+              createdDate.getMonth() < 9
+                ? `0${createdDate.getMonth() + 1}`
+                : `${createdDate.getMonth() + 1}`
+            }-${
+              createdDate.getDate() < 10
+                ? `0${createdDate.getDate()}`
+                : `${createdDate.getDate()}`
+            }`,
+          };
+        }),
+      });
+    } else if (resultQuery.errors) {
+      let errors = "I'hv got errors:";
+      resultQuery.errors.forEach(element => {
+        errors += `\n${element.message}`;
+      });
+      // this will change when do this "story" https://trello.com/c/R8O7cPac
+      // eslint-disable-next-line no-alert
+      alert(errors);
+    }
   }
 
   render() {
