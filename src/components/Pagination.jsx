@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 export default class Pagination extends Component {
   render() {
-    const { pagesNumber, _onClick } = this.props;
+    const { pagesNumber, onClick } = this.props;
     const actualPage = this.props.actualPage || 1;
-    if (!_onClick) throw new ReferenceError('Not add props onChange');
+    if (!onClick) throw new ReferenceError('Not add props onChange');
     const buttons = [];
     for (let i = 1; i <= pagesNumber; i++)
       buttons.push(
@@ -12,7 +12,7 @@ export default class Pagination extends Component {
         <button
           key={i}
           className={`button is-text ${actualPage === i ? 'is-active' : ''}`}
-          onClick={() => _onClick(i)}
+          onClick={() => onClick(i)}
         >
           {i}
         </button>
