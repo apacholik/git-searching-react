@@ -3,6 +3,7 @@ import 'bulma';
 import '@fortawesome/fontawesome-free/js/all';
 import ResultTable from './components/ResultTable.jsx';
 import SearchBar from './components/SearchBar.jsx';
+import Pagination from './components/Pagination.jsx';
 
 const GITHUB_SEARCH_URL = 'https://api.github.com/search/repositories';
 const GITHUB_BASES_PARAMETERS = 'q=test&sort=stars&order=desc&page=1';
@@ -67,6 +68,9 @@ class App extends Component {
               </div>
               <div className="column is-full">
                 <ResultTable>{this.state.githubRepos}</ResultTable>
+              </div>
+              <div className="column is-full has-text-centered">
+                <Pagination pagesNumber={5} />
               </div>
             </div>
           </div>
