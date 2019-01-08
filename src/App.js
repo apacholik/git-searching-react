@@ -4,6 +4,7 @@ import '@fortawesome/fontawesome-free/js/all';
 import ResultTable from './components/ResultTable.jsx';
 import SearchBar from './components/SearchBar.jsx';
 import Pagination from './components/Pagination.jsx';
+import SelectorHowRows from './components/SelectorHowRows.jsx';
 
 const GITHUB_SEARCH_URL = 'https://api.github.com/search/repositories';
 const GITHUB_BASES_PARAMETERS = 'q=test&sort=stars&order=desc&page=1';
@@ -17,6 +18,7 @@ class App extends Component {
       pages: 0,
       actualPage: 1,
       startShowResultByItem: 0,
+      numberOfRows: 5,
     };
   }
 
@@ -46,7 +48,7 @@ class App extends Component {
             }`,
           };
         }),
-        pages: resultQuery.items.length / 5,
+        pages: resultQuery.items.length / this.state.numberOfRows,
       });
     } else if (resultQuery.errors) {
       let errors = "I'hv got errors:";
@@ -62,8 +64,19 @@ class App extends Component {
   async goToPage(pagesNumber) {
     this.setState({
       actualPage: pagesNumber,
-      startShowResultByItem: (pagesNumber - 1) * 5,
+      startShowResultByItem: (pagesNumber - 1) * this.state.numberOfRows,
     });
+    window.scrollTo(0,0);
+  }
+  
+  changeNumberOfShownRows(newNumber) {
+    newNumber = parseInt(newNumber);
+    const numberOfItems = Math.round((this.state.pages * this.state.numberOfRows) / newNumber);
+    this.setState({
+      numberOfRows: newNumber,
+      pages: numberOfItems,
+      actualPage: 1,
+    })
   }
 
   render() {
@@ -77,8 +90,11 @@ class App extends Component {
                   onChange={text => this.searchInGithubRepositories(text)}
                 />
               </div>
+              <div className="column is-full has-text-right">
+                <SelectorHowRows maxNumberOfRows={20} stepBy={5} onChange={newNumber => this.changeNumberOfShownRows(newNumber)} />
+              </div>
               <div className="column is-full">
-                <ResultTable startItemBy={this.state.startShowResultByItem}>
+                <ResultTable startItemBy={this.state.startShowResultByItem} numberOfRows={this.state.numberOfRows}>
                   {this.state.githubRepos}
                 </ResultTable>
               </div>
