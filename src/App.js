@@ -3,6 +3,7 @@ import 'bulma';
 import '@fortawesome/fontawesome-free/js/all';
 import ResultTable from './components/ResultTable.jsx';
 import SearchBar from './components/SearchBar.jsx';
+import Pagination from './components/Pagination.jsx';
 
 const GITHUB_SEARCH_URL = 'https://api.github.com/search/repositories';
 const GITHUB_BASES_PARAMETERS = 'q=test&sort=stars&order=desc&page=1';
@@ -13,6 +14,9 @@ class App extends Component {
     super();
     this.state = {
       githubRepos: [],
+      pages: 0,
+      actualPage: 1,
+      startShowResultByItem: 0,
     };
   }
 
@@ -42,6 +46,7 @@ class App extends Component {
             }`,
           };
         }),
+        pages: resultQuery.items.length / 5,
       });
     } else if (resultQuery.errors) {
       let errors = "I'hv got errors:";
@@ -52,6 +57,13 @@ class App extends Component {
       // eslint-disable-next-line no-alert
       alert(errors);
     }
+  }
+
+  async goToPage(pagesNumber) {
+    this.setState({
+      actualPage: pagesNumber,
+      startShowResultByItem: (pagesNumber - 1) * 5,
+    });
   }
 
   render() {
@@ -66,7 +78,16 @@ class App extends Component {
                 />
               </div>
               <div className="column is-full">
-                <ResultTable>{this.state.githubRepos}</ResultTable>
+                <ResultTable startItemBy={this.state.startShowResultByItem}>
+                  {this.state.githubRepos}
+                </ResultTable>
+              </div>
+              <div className="column is-full has-text-centered">
+                <Pagination
+                  pagesNumber={this.state.pages}
+                  actualPage={this.state.actualPage}
+                  onClick={newPage => this.goToPage(newPage)}
+                />
               </div>
             </div>
           </div>

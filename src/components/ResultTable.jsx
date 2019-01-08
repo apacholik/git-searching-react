@@ -15,15 +15,20 @@ export default class ResultTable extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.children.slice(0, numberOfRows).map(row => (
-            <tr key={row.id}>
-              <td className="has-text-centered">{row.id}</td>
-              <td className="has-text-centered">{row.title}</td>
-              <td className="has-text-centered">{row.owner}</td>
-              <td className="has-text-centered">{row.stars}</td>
-              <td className="has-text-centered">{row.createAt}</td>
-            </tr>
-          ))}
+          {this.props.children
+            .slice(
+              this.props.startItemBy,
+              numberOfRows + this.props.startItemBy
+            )
+            .map(row => (
+              <tr key={row.id}>
+                <td className="has-text-centered">{row.id}</td>
+                <td className="has-text-centered">{row.title}</td>
+                <td className="has-text-centered">{row.owner}</td>
+                <td className="has-text-centered">{row.stars}</td>
+                <td className="has-text-centered">{row.createAt}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     );
