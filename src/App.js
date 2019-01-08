@@ -29,7 +29,7 @@ class App extends Component {
       `${GITHUB_SEARCH_URL}?${this.searchParameters.toString()}`
     ).then(res => res.json());
     if (resultQuery.items) {
-      this.setState({
+      this.setState(prewState => ({
         githubRepos: resultQuery.items.map(item => {
           const createdDate = new Date(item.created_at);
           return {
@@ -48,8 +48,8 @@ class App extends Component {
             }`,
           };
         }),
-        pages: resultQuery.items.length / this.state.numberOfRows,
-      });
+        pages: resultQuery.items.length / prewState.numberOfRows,
+      }));
     } else if (resultQuery.errors) {
       let errors = "I'hv got errors:";
       resultQuery.errors.forEach(element => {
@@ -62,21 +62,22 @@ class App extends Component {
   }
 
   async goToPage(pagesNumber) {
-    this.setState({
+    this.setState(prevState => ({
       actualPage: pagesNumber,
-      startShowResultByItem: (pagesNumber - 1) * this.state.numberOfRows,
-    });
-    window.scrollTo(0,0);
+      startShowResultByItem: (pagesNumber - 1) * prevState.numberOfRows,
+    }));
+    window.scrollTo(0, 0);
   }
-  
+
   changeNumberOfShownRows(newNumber) {
-    newNumber = parseInt(newNumber);
-    const numberOfItems = Math.round((this.state.pages * this.state.numberOfRows) / newNumber);
-    this.setState({
+    const _newNumber = parseInt(newNumber, 10);
+    this.setState(prevState => ({
       numberOfRows: newNumber,
-      pages: numberOfItems,
+      pages: Math.round(
+        (prevState.pages * prevState.numberOfRows) / _newNumber
+      ),
       actualPage: 1,
-    })
+    }));
   }
 
   render() {
@@ -91,10 +92,20 @@ class App extends Component {
                 />
               </div>
               <div className="column is-full has-text-right">
-                <SelectorHowRows maxNumberOfRows={20} stepBy={5} onChange={newNumber => this.changeNumberOfShownRows(newNumber)} />
+                <SelectorHowRows
+                  maxNumberOfRows={20}
+                  stepBy={5}
+                  onChange={newNumber =>
+                    this.changeNumberOfShownRows(newNumber)
+                  }
+                />
+                <span> rows per page</span>
               </div>
               <div className="column is-full">
-                <ResultTable startItemBy={this.state.startShowResultByItem} numberOfRows={this.state.numberOfRows}>
+                <ResultTable
+                  startItemBy={this.state.startShowResultByItem}
+                  numberOfRows={this.state.numberOfRows}
+                >
                   {this.state.githubRepos}
                 </ResultTable>
               </div>

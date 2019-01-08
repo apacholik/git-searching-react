@@ -12,7 +12,7 @@ export default class SelectorHowRows extends Component {
       );
     }
     return (
-      <div className="select">
+      <div className="select is-small">
         <select
           onChange={e => {
             this.props.onChange(e.target.value);
