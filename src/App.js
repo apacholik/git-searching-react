@@ -71,13 +71,15 @@ class App extends Component {
 
   changeNumberOfShownRows(newNumber) {
     const _newNumber = parseInt(newNumber, 10);
-    this.setState(prevState => ({
-      numberOfRows: newNumber,
-      pages: Math.round(
-        (prevState.pages * prevState.numberOfRows) / _newNumber
-      ),
-      actualPage: 1,
-    }));
+    this.setState(
+      prevState => ({
+        numberOfRows: _newNumber,
+        pages: Math.round(
+          (prevState.pages * prevState.numberOfRows) / _newNumber
+        ),
+      }),
+      () => this.goToPage(1)
+    );
   }
 
   render() {
