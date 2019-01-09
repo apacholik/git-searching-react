@@ -16,6 +16,6 @@
 
 ## How use
 1. go to page and in search input write what You repository search. You can use GitHub queries [What?](https://help.github.com/articles/searching-for-repositories/)
-2. in the table below (if all will go good), it'll show result sorted by order most stars. Below of table You have pagination where You can check more result
+2. in the table below (if all will go good), it'll show result sorted by order most stars. Below of table You have pagination where You can check more result and between search input and table with result, you can select how many rows you want see by page
 
 ![how works](https://media.giphy.com/media/X6IpGWNNKw1kWDw6Yo/giphy.gif)
