@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bulma';
 import '@fortawesome/fontawesome-free/js/all';
-import ResultTable from './components/ResultTable.jsx';
+import ResultTable from './components/ResultTable';
 import SearchBar from './components/SearchBar.jsx';
 import Pagination from './components/Pagination.jsx';
 import SelectorHowRows from './components/SelectorHowRows.jsx';

@@ -1,4 +1,5 @@
 import React from 'react';
+import TableHead from './TableHead.jsx';
 
 export default class ResultTable extends React.Component {
   constructor(props) {
@@ -143,23 +144,3 @@ export default class ResultTable extends React.Component {
     );
   }
 }
-
-export const TableHead = ({ children, onClick, className, sortIco }) => {
-  const sortIcons = [
-    <span key="desc" className="icon">
-      <i className="fas fa-sort-down" />
-    </span>,
-    <span key="asc" className="icon">
-      <i className="fas fa-sort-up" />
-    </span>,
-  ];
-  return (
-    <th
-      className={className === undefined ? 'has-text-centered' : className}
-      onClick={() => onClick()}
-    >
-      {sortIco !== undefined ? sortIcons[Number(sortIco)] : ''}
-      {children}
-    </th>
-  );
-};
