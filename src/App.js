@@ -86,7 +86,7 @@ class App extends Component {
     return (
       <section className="section">
         <div className="columns">
-          <div className="column is-three-fifths is-offset-one-fifth">
+          <div className="column is-three-fifths is-offset-one-fifth-desktop is-12-touch">
             <div className="columns is-multiline">
               <div className="column is-full">
                 <SearchBar
