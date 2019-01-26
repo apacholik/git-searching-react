@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import 'bulma';
 import '@fortawesome/fontawesome-free/js/all';
-import ResultTable from './components/ResultTable.jsx';
+// eslint-disable-next-line import/no-unresolved
+import ResultTable from './components/ResultTable';
 import SearchBar from './components/SearchBar.jsx';
 import Pagination from './components/Pagination.jsx';
 import SelectorHowRows from './components/SelectorHowRows.jsx';
@@ -19,16 +20,49 @@ class App extends Component {
       actualPage: 1,
       startShowResultByItem: 0,
       numberOfRows: 5,
+      tableHeadStructure: [
+        {
+          name: 'id',
+          type: 'Number',
+          text: 'ID',
+        },
+        {
+          name: 'title',
+          type: 'String',
+          text: 'Repo Title',
+        },
+        {
+          name: 'owner',
+          type: 'String',
+          text: 'Owner',
+        },
+        {
+          name: 'stars',
+          type: 'Number',
+          text: 'Stars',
+        },
+        {
+          name: 'createAt',
+          type: 'String',
+          text: 'Create at',
+        },
+      ],
     };
+    this.requestStorage = {};
   }
 
   async searchInGithubRepositories(query) {
     this.searchParameters = new URLSearchParams(GITHUB_BASES_PARAMETERS);
     this.searchParameters.set('q', query);
-    const resultQuery = await fetch(
-      `${GITHUB_SEARCH_URL}?${this.searchParameters.toString()}`
-    ).then(res => res.json());
+    let resultQuery = {};
+    if (this.requestStorage[query] !== undefined)
+      resultQuery.items = this.requestStorage[query];
+    else
+      resultQuery = await fetch(
+        `${GITHUB_SEARCH_URL}?${this.searchParameters.toString()}`
+      ).then(res => res.json());
     if (resultQuery.items) {
+      this.requestStorage[query] = resultQuery.items;
       this.setState(prewState => ({
         githubRepos: resultQuery.items.map(item => {
           const createdDate = new Date(item.created_at);
@@ -86,7 +120,7 @@ class App extends Component {
     return (
       <section className="section">
         <div className="columns">
-          <div className="column is-three-fifths is-offset-one-fifth">
+          <div className="column is-three-fifths is-offset-one-fifth-desktop is-12-touch">
             <div className="columns is-multiline">
               <div className="column is-full">
                 <SearchBar
@@ -107,6 +141,7 @@ class App extends Component {
                 <ResultTable
                   startItemBy={this.state.startShowResultByItem}
                   numberOfRows={this.state.numberOfRows}
+                  tableHeadStructure={this.state.tableHeadStructure}
                 >
                   {this.state.githubRepos}
                 </ResultTable>
