@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bulma';
 import '@fortawesome/fontawesome-free/js/all';
+// eslint-disable-next-line import/no-unresolved
 import ResultTable from './components/ResultTable';
 import SearchBar from './components/SearchBar.jsx';
 import Pagination from './components/Pagination.jsx';
@@ -47,15 +48,21 @@ class App extends Component {
         },
       ],
     };
+    this.requestStorage = {};
   }
 
   async searchInGithubRepositories(query) {
     this.searchParameters = new URLSearchParams(GITHUB_BASES_PARAMETERS);
     this.searchParameters.set('q', query);
-    const resultQuery = await fetch(
-      `${GITHUB_SEARCH_URL}?${this.searchParameters.toString()}`
-    ).then(res => res.json());
+    let resultQuery = {};
+    if (this.requestStorage[query] !== undefined)
+      resultQuery.items = this.requestStorage[query];
+    else
+      resultQuery = await fetch(
+        `${GITHUB_SEARCH_URL}?${this.searchParameters.toString()}`
+      ).then(res => res.json());
     if (resultQuery.items) {
+      this.requestStorage[query] = resultQuery.items;
       this.setState(prewState => ({
         githubRepos: resultQuery.items.map(item => {
           const createdDate = new Date(item.created_at);
