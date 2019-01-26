@@ -19,6 +19,33 @@ class App extends Component {
       actualPage: 1,
       startShowResultByItem: 0,
       numberOfRows: 5,
+      tableHeadStructure: [
+        {
+          name: 'id',
+          type: 'Number',
+          text: 'ID',
+        },
+        {
+          name: 'title',
+          type: 'String',
+          text: 'Repo Title',
+        },
+        {
+          name: 'owner',
+          type: 'String',
+          text: 'Owner',
+        },
+        {
+          name: 'stars',
+          type: 'Number',
+          text: 'Stars',
+        },
+        {
+          name: 'createAt',
+          type: 'String',
+          text: 'Create at',
+        },
+      ],
     };
   }
 
@@ -107,6 +134,7 @@ class App extends Component {
                 <ResultTable
                   startItemBy={this.state.startShowResultByItem}
                   numberOfRows={this.state.numberOfRows}
+                  tableHeadStructure={this.state.tableHeadStructure}
                 >
                   {this.state.githubRepos}
                 </ResultTable>

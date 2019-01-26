@@ -71,57 +71,19 @@ export default class ResultTable extends React.Component {
       <table className="table is-fullwidth table is-bordered">
         <thead>
           <tr>
-            <TableHead
-              className="has-text-right"
-              onClick={() => this.changeSorting('id', 'Number')}
-              sortIco={
-                this.state.sort.by === 'id'
-                  ? this.state.sort.isOrderByDESC
-                  : undefined
-              }
-            >
-              ID
-            </TableHead>
-            <TableHead
-              onClick={() => this.changeSorting('title', 'String')}
-              sortIco={
-                this.state.sort.by === 'title'
-                  ? this.state.sort.isOrderByDESC
-                  : undefined
-              }
-            >
-              Repo Title
-            </TableHead>
-            <TableHead
-              onClick={() => this.changeSorting('owner', 'String')}
-              sortIco={
-                this.state.sort.by === 'owner'
-                  ? this.state.sort.isOrderByDESC
-                  : undefined
-              }
-            >
-              Owner
-            </TableHead>
-            <TableHead
-              onClick={() => this.changeSorting('stars', 'Number')}
-              sortIco={
-                this.state.sort.by === 'stars'
-                  ? this.state.sort.isOrderByDESC
-                  : undefined
-              }
-            >
-              Stars
-            </TableHead>
-            <TableHead
-              onClick={() => this.changeSorting('createAt', 'String')}
-              sortIco={
-                this.state.sort.by === 'createAt'
-                  ? this.state.sort.isOrderByDESC
-                  : undefined
-              }
-            >
-              Create at
-            </TableHead>
+            {this.props.tableHeadStructure.map(item => (
+              <TableHead
+                key={item.name}
+                onClick={() => this.changeSorting(item.name, item.type)}
+                sortIco={
+                  this.state.sort.by === item.name
+                    ? this.state.sort.isOrderByDESC
+                    : undefined
+                }
+              >
+                {item.text}
+              </TableHead>
+            ))}
           </tr>
         </thead>
         <tbody>
