@@ -10,6 +10,7 @@ export default class SearchBar extends Component {
   delayForWriteEnd() {
     clearInterval(this.timeoutFingerprint);
     this.timeoutFingerprint = setTimeout(() => {
+      clearInterval(this.timeoutFingerprint);
       if (!this.props.onChange)
         throw new ReferenceError('Not add props onChange');
       this.props.onChange(this.inputRef.current.value);
