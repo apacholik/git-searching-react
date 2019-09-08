@@ -1,13 +1,15 @@
 {
-  "main.js": "/git-searching-react/static/js/main.3a785f75.chunk.js",
-  "main.js.map": "/git-searching-react/static/js/main.3a785f75.chunk.js.map",
-  "static/css/1.787555c6.chunk.css": "/git-searching-react/static/css/1.787555c6.chunk.css",
-  "static/js/1.ab3d2b38.chunk.js": "/git-searching-react/static/js/1.ab3d2b38.chunk.js",
-  "static/js/1.ab3d2b38.chunk.js.map": "/git-searching-react/static/js/1.ab3d2b38.chunk.js.map",
-  "runtime~main.js": "/git-searching-react/static/js/runtime~main.2d010ee1.js",
-  "runtime~main.js.map": "/git-searching-react/static/js/runtime~main.2d010ee1.js.map",
-  "static/css/1.787555c6.chunk.css.map": "/git-searching-react/static/css/1.787555c6.chunk.css.map",
-  "index.html": "/git-searching-react/index.html",
-  "precache-manifest.d04b28ea120433e05f4e53810777abdc.js": "/git-searching-react/precache-manifest.d04b28ea120433e05f4e53810777abdc.js",
-  "service-worker.js": "/git-searching-react/service-worker.js"
+  "files": {
+    "main.js": "/git-searching-react/static/js/main.ba7ad595.chunk.js",
+    "main.js.map": "/git-searching-react/static/js/main.ba7ad595.chunk.js.map",
+    "runtime~main.js": "/git-searching-react/static/js/runtime~main.0e7af685.js",
+    "runtime~main.js.map": "/git-searching-react/static/js/runtime~main.0e7af685.js.map",
+    "static/css/2.cf291e2b.chunk.css": "/git-searching-react/static/css/2.cf291e2b.chunk.css",
+    "static/js/2.fb0c3a67.chunk.js": "/git-searching-react/static/js/2.fb0c3a67.chunk.js",
+    "static/js/2.fb0c3a67.chunk.js.map": "/git-searching-react/static/js/2.fb0c3a67.chunk.js.map",
+    "index.html": "/git-searching-react/index.html",
+    "precache-manifest.7a23b098fad2c78bb71cef0b20a4e30c.js": "/git-searching-react/precache-manifest.7a23b098fad2c78bb71cef0b20a4e30c.js",
+    "service-worker.js": "/git-searching-react/service-worker.js",
+    "static/css/2.cf291e2b.chunk.css.map": "/git-searching-react/static/css/2.cf291e2b.chunk.css.map"
+  }
 }
