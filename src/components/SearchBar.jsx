@@ -1,30 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.timeoutFingerprint = null;
-    this.inputRef = new React.createRef();
+export default function SearchBar({ onChange }) {
+  if (!onChange) {
+    throw new ReferenceError('Not add props onChange');
   }
 
-  delayForWriteEnd() {
-    clearInterval(this.timeoutFingerprint);
-    this.timeoutFingerprint = setTimeout(() => {
-      clearInterval(this.timeoutFingerprint);
-      if (!this.props.onChange)
-        throw new ReferenceError('Not add props onChange');
-      this.props.onChange(this.inputRef.current.value);
-    }, 1500);
-  }
+  let timeoutFingerprint = null;
 
-  render = () => (
+  return (
     <div className="control has-icons-right">
       <input
         className="input"
         type="text"
         placeholder="Search..."
-        onChange={() => this.delayForWriteEnd()}
-        ref={this.inputRef}
+        onChange={e => {
+          const { value } = e.target;
+          clearInterval(timeoutFingerprint);
+          timeoutFingerprint = setTimeout(() => {
+            clearInterval(timeoutFingerprint);
+            onChange(value);
+          }, 1500);
+        }}
       />
       <span className="icon is-small is-right">
         <i className="fas fa-search" />
